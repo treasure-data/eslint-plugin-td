@@ -5,7 +5,8 @@
     "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
   "main": "index.js",
   "scripts": {
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "lint": "eslint ."
   },
   "keywords": ["eslint", "eslintplugin", "eslint-plugin"],
   "author": "Dan Reeves <dreeves@treasuredata.com>",
@@ -22,8 +23,6 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-config-standard-jsx": "^4.0.2",
-    "eslint-import-resolver-babel-module": "^4.0.0",
-    "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-plugin-flowtype": "^2.40.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
@@ -33,18 +32,28 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2"
   },
   "engines": {
-    "node": ">= 4"
+    "node": ">=4"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "lint-staged": {
-    "*.{js,json,md}": ["prettier --write", "git add"]
+    "*.js": ["eslint"],
+    "*.{js,json}": ["prettier --write", "git add"]
   }
 }
