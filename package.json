@@ -1,0 +1,50 @@
+{
+  "name": "eslint-plugin-td",
+  "version": "1.0.0",
+  "description":
+    "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "keywords": ["eslint", "eslintplugin", "eslint-plugin"],
+  "author": "Dan Reeves <dreeves@treasuredata.com>",
+  "bugs": {
+    "url": "https://github.com/treasure-data/eslint-plugin-td/issues"
+  },
+  "homepage": "https://github.com/treasure-data/eslint-plugin-td",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "import-modules": "^1.1.0"
+  },
+  "peerDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-standard-jsx": "^4.0.2",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2"
+  },
+  "engines": {
+    "node": ">= 4"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{js,json,md}": ["prettier --write", "git add"]
+  }
+}
