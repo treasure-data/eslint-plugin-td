@@ -5,8 +5,9 @@
     "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "precommit": "lint-staged",
-    "lint": "eslint ."
+    "postinstall": "install-peerdeps eslint-plugin-td --dev --only-peers"
   },
   "keywords": ["eslint", "eslintplugin", "eslint-plugin"],
   "author": "Dan Reeves <dreeves@treasuredata.com>",
@@ -16,9 +17,11 @@
   "homepage": "https://github.com/treasure-data/eslint-plugin-td",
   "license": "Apache-2.0",
   "dependencies": {
-    "import-modules": "^1.1.0"
+    "import-modules": "^1.1.0",
+    "install-peerdeps": "^1.4.1"
   },
   "peerDependencies": {
+    "babel-eslint": "^8.1.2",
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
