@@ -1,15 +1,18 @@
 {
   "name": "eslint-plugin-td",
-  "version": "1.0.1",
-  "description":
-    "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
+  "version": "1.0.2",
+  "description": "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
     "precommit": "lint-staged",
     "postinstall": "install-peerdeps eslint-plugin-td --only-peers --silent"
   },
-  "keywords": ["eslint", "eslintplugin", "eslint-plugin"],
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
   "author": "Dan Reeves <dreeves@treasuredata.com>",
   "bugs": {
     "url": "https://github.com/treasure-data/eslint-plugin-td/issues"
@@ -56,7 +59,12 @@
     "singleQuote": true
   },
   "lint-staged": {
-    "*.js": ["eslint"],
-    "*.{js,json}": ["prettier --write", "git add"]
+    "*.js": [
+      "eslint"
+    ],
+    "*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
