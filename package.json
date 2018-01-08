@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "postinstall": "install-peerdeps eslint-plugin-td --dev --only-peers"
+    "postinstall":
+      "install-peerdeps eslint-plugin-td --dev --only-peers --silent"
   },
   "keywords": ["eslint", "eslintplugin", "eslint-plugin"],
   "author": "Dan Reeves <dreeves@treasuredata.com>",
