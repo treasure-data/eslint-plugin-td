@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-td",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
   "main": "index.js",
   "scripts": {
