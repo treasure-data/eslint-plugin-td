@@ -20,6 +20,6 @@ import { createSelector } from 'reselect'
 
 ```json
 "rules": {
-        'td/no-ducks': 'error'
+        "td/no-ducks": "error"
     }
 ```
