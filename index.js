@@ -30,7 +30,12 @@ module.exports = {
       ],
       plugins: ['standard', 'flowtype', 'react', 'prettier', 'td'],
       rules: {
-        'td/no-ducks': 'error'
+        'td/no-ducks': 'error',
+        'import/extensions': [
+          'error',
+          'never',
+          { css: 'always', json: 'always' }
+        ]
       }
     }
   }
