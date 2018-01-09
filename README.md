@@ -2,6 +2,8 @@
 
 > A shared eslint config and additional rules, to be used across Treasure Data frontend projects.
 
+[![Build Status](https://travis-ci.org/treasure-data/eslint-plugin-td.svg?branch=master)](https://travis-ci.org/treasure-data/eslint-plugin-td)
+
 ## Install
 
 ```
