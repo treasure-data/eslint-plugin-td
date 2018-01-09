@@ -16,7 +16,7 @@ Create the following files:
 * `tests/new-rule.test.js`
 * `docs/rules/new-rule.md`
 
-Please follow kebab-case for the rule .js file, as we import the whole directory and expose them by their file name automatically and to be consistent with the existing style in ESLint plugins.
+Please follow kebab-case for the rule .js file to be consistent with the existing style in ESLint plugins. We import the whole directory and expose them by their file name automatically.
 
 You should also update the `README.md` to add the rule to the list, give a brief description, and link to the docs file.
 
