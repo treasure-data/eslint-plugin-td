@@ -2,6 +2,8 @@
 
 > A shared eslint config and additional rules, to be used across Treasure Data frontend projects.
 
+[![Build Status](https://travis-ci.org/treasure-data/eslint-plugin-td.svg?branch=master)](https://travis-ci.org/treasure-data/eslint-plugin-td)
+
 ## Install
 
 ```
@@ -25,7 +27,7 @@ For more information on configuring eslint, see the [docs](https://eslint.org/do
 
 ## Rules
 
-+ **no-ducks** - Prevents the use of ["duck modules"](https://github.com/erikras/ducks-modular-redux). Selectors/actions/reducers should go into their own file.
+* **no-ducks** - Prevents the use of ["duck modules"](https://github.com/erikras/ducks-modular-redux). Selectors/actions/reducers should go into their own file.
 
 ## Licence
 
