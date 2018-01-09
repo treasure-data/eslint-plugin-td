@@ -4,7 +4,6 @@
 
 Eslint configs, unless they require plugins, will be setting rules that come with eslint by default. You should first check the configs we already extend to see if one of them is already setting it. Remember that the order that we extend configs matters, later configs override the settings of previous ones. If no config already sets a rule, or one turns off a rule that we want, you can define it in the `rules` object. See the [eslint docs: configuring](https://eslint.org/docs/user-guide/configuring).
 
-
 ## From external plugins
 
 [TBD]
