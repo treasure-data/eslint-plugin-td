@@ -14,7 +14,8 @@ module.exports = {
         ) {
           context.report({
             node,
-            message: `You should only create selectors in a selectors.js or ModuleNameSelectors.js file`
+            message:
+              'You should only create selectors in a selectors.js or ModuleNameSelectors.js file'
           })
         }
       }

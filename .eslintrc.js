@@ -6,5 +6,10 @@ module.exports = {
   ...plugin.configs.recommended,
   rules: {},
   extends: ['standard', 'prettier', 'prettier/standard'],
-  plugins: ['standard', 'prettier']
+  plugins: ['standard', 'prettier'],
+  globals: {
+    jest: true,
+    it: true,
+    describe: true
+  }
 }
