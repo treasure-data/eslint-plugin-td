@@ -27,7 +27,7 @@ For more information on configuring eslint, see the [docs](https://eslint.org/do
 
 ## Rules
 
-* **no-ducks** - Prevents the use of ["duck modules"](https://github.com/erikras/ducks-modular-redux). Selectors/actions/reducers should go into their own file.
+* [**no-ducks**](/docs/rules/no-ducks.md) - Prevents the use of ["duck modules"](https://github.com/erikras/ducks-modular-redux).
 
 ## Licence
 
