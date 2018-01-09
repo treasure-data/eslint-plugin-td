@@ -8,6 +8,8 @@
 
 ## Steps
 
+While in the root of the repo, ensuring you've checked off the prerequisites:
+
 1. `npm version [sermver label]` e.g. `npm version patch`
 2. `git push --tags`
 3. `npm publish`
