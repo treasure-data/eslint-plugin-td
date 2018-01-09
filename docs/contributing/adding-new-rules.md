@@ -2,7 +2,7 @@
 
 ## From external configs
 
-Eslint configs, unless they require plugins, will be setting rules that come with eslint by default. You should first check the configs we already extend to see if one of them is already setting it. Remember that the order that we extend configs matters, later configs override the settings of previous ones. If no config already sets a rule, or one turns off a rule that we want, you can define it in the `rules` object. See the [eslint docs: configuring](https://eslint.org/docs/user-guide/configuring).
+ESLint configs, unless they require plugins, will be setting rules that come with ESLint by default. You should first check the configs we already extend to see if one of them is already setting it. Remember that the order that we extend configs matters, later configs override the settings of previous ones. If no config already sets a rule, or one turns off a rule that we want, you can define it in the `rules` object. See the [ESLint docs: configuring](https://ESLint.org/docs/user-guide/configuring).
 
 ## From external plugins
 
@@ -16,7 +16,7 @@ Create the following files:
 * `tests/new-rule.test.js`
 * `docs/rules/new-rule.md`
 
-Please follow kebab-case for the rule .js file, as we import the whole directory and expose them by their file name automatically and to be consistent with the existing style in eslint plugins.
+Please follow kebab-case for the rule .js file, as we import the whole directory and expose them by their file name automatically and to be consistent with the existing style in ESLint plugins.
 
 You should also update the `README.md` to add the rule to the list, give a brief description, and link to the docs file.
 
@@ -24,11 +24,11 @@ Finally, our default setting for the rule should be added to the recommended con
 
 ### `rules/new-rule.js`
 
-For writing a new rule, see the [eslint docs: working with plugins](https://eslint.org/docs/developer-guide/working-with-plugins).
+For writing a new rule, see the [ESLint docs: working with plugins](https://ESLint.org/docs/developer-guide/working-with-plugins).
 
 ### `tests/new-rule.test.js`
 
-Eslint provides a `RuleTester` utility which utilizes the `describe` and `it` functions of `jest`. See the [eslint docs: RuleTester](https://eslint.org/docs/developer-guide/nodejs-api#ruletester).
+ESLint provides a `RuleTester` utility which utilizes the `describe` and `it` functions of `jest`. See the [ESLint docs: RuleTester](https://ESLint.org/docs/developer-guide/nodejs-api#ruletester).
 
 ### `docs/rules/new-rule.md`
 
