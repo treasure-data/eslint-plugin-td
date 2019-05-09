@@ -1,0 +1,47 @@
+version: 2
+
+defaults: &defaults
+  working_directory: /tmp/eslint-plugin-td
+  docker:
+    - image: 523683666290.dkr.ecr.us-east-1.amazonaws.com/td-build:2018-04-19
+      environment:
+        # set path to use nodejs v9.6.1 instead of default version
+        PATH: /root/.nvm/versions/node/v9.6.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - run:
+          name: Run the tests
+          command: yarn test
+  publish:
+    <<: *defaults
+    steps:
+      - run:
+          # This will also create an ENV file in current directory if a new version is released
+          name: Semantic release
+          command: GH_TOKEN=${TD_CIRCLECI_GIBHUB_OAUTH_TOKEN} NPM_TOKEN=${CIRCLECI_NPM_TOKEN} yarn release
+
+filter-all: &filter-all
+  filters: # all branches
+    branches:
+      only: /.*/
+filter-master-only: &filter-master-only
+  filters:
+    branches:
+      only: master
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test:
+          requires:
+            - checkout
+          <<: *filter-all
+      - publish:
+          requires:
+            - test
+          context: org-global
+          <<: *filter-master-only
