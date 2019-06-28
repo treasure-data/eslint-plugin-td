@@ -18,7 +18,8 @@
   "homepage": "https://github.com/treasure-data/eslint-plugin-td",
   "license": "Apache-2.0",
   "dependencies": {
-    "import-modules": "^1.1.0"
+    "import-modules": "^1.1.0",
+    "jsonpath": "^1.0.2"
   },
   "peerDependencies": {
     "eslint": "^4.13.1",
