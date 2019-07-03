@@ -3,7 +3,6 @@ const jp = require('jsonpath')
 /*
  * helper functions
  */
-// const l = (...args) => { console.log.apply(console, args); return true; }
 const oneOf = (needle, haystack) => haystack.indexOf(needle) > -1
 const matchAll = (needles, haystack) => {
   if (needles.length === 0) {
@@ -27,92 +26,42 @@ const matchAll = (needles, haystack) => {
   }, true)
 }
 
-/*
- * transform a babel-eslint AST node to a simplified representation for pattern matching
- */
-function transform(astNode) {
-  const supportedChildren = element =>
-    oneOf(element.type, ['JSXElement', 'JSXExpressionContainer'])
-  const children = cs => cs.filter(supportedChildren).map(expressionOrElement)
-  const attributes = attrs =>
-    attrs.map(attr => {
-      const name =
-        attr.type === 'JSXSpreadAttribute'
-          ? `...${attr.argument.name}`
-          : attr.name.name
-      return { name }
-    })
-  // const expression = expr => ({
-  //   type: 'expression',
-  //   left: expressionOrElement(expr.left),
-  //   right: expressionOrElement(expr.right)
-  // })
-  const expression = expr => {
-    return {
-      type: 'expression',
-      left: expressionOrElement(expr.left),
-      right: expressionOrElement(expr.right)
-    }
-  }
-  const expressionOrElement = node => {
-    switch (node.type) {
-      case 'JSXElement':
-        return element(node)
-      case 'JSXExpressionContainer':
-        return expressionOrElement(node.expression)
-      case 'LogicalExpression':
-        return expression(node)
-      case 'MemberExpression':
-      case 'JSXMemberExpression':
-        return memberExpressionName(node)
-      default:
-        return null
-    }
-  }
-  const memberExpressionName = expr => {
-    const collapse = obj =>
-      oneOf(obj.type, ['JSXIdentifier', 'Identifier'])
-        ? obj.name
-        : memberExpressionName(obj)
-    const object = collapse(expr.object)
-    const property = collapse(expr.property)
+const memberExpressionName = expr => {
+  const collapse = obj =>
+    oneOf(obj.type, ['JSXIdentifier', 'Identifier'])
+      ? obj.name
+      : memberExpressionName(obj)
+  const object = collapse(expr.object)
+  const property = collapse(expr.property)
 
-    return `${object}.${property}`
-  }
-  const name = node =>
-    jp.value(node, '$.openingElement.name.name') ||
-    memberExpressionName(node.openingElement.name)
-  const notNull = x => !!x
-  const element = el => ({
-    type: 'element',
-    tagName: name(el),
-    attributes: attributes(el.openingElement.attributes || []).filter(notNull),
-    children: children(el.children || []).filter(notNull)
-  })
-
-  return element(astNode)
+  return `${object}.${property}`
 }
+
+const tag = node =>
+  jp.value(node, '$.openingElement.name.name') ||
+  memberExpressionName(node.openingElement.name)
 
 /*
  * available matchers
  */
 const match = {
-  element: tagName => (...attributes) => (...children) => el =>
-    el.type === 'element' &&
-    tagName === el.tagName &&
-    matchAll(attributes, el.attributes) &&
-    matchAll(children, el.children),
-  attribute: name => attr => attr.name === name
+  /*
+   * Recursively match jsx elements based on tagName
+   */
+  element: tagName => (...children) => el =>
+    el.type === 'JSXElement' &&
+    tagName === tag(el) &&
+    matchAll(children, el.children)
 }
 
 /*
  * patterns for modal usages that should be replaced with a standard modal
  */
 const patterns = {
-  shouldBeSimpleModal: match.element('Modal')()(
-    match.element('Modal.Header')()(),
-    match.element('Modal.Body')()(),
-    match.element('Modal.Footer')()()
+  shouldBeSimpleModal: match.element('Modal')(
+    match.element('Modal.Header')(),
+    match.element('Modal.Body')(),
+    match.element('Modal.Footer')()
   )
 }
 
@@ -125,7 +74,7 @@ module.exports = {
         }
 
         try {
-          if (patterns.shouldBeSimpleModal(transform(element))) {
+          if (patterns.shouldBeSimpleModal(element)) {
             context.report({
               node: element,
               message:
