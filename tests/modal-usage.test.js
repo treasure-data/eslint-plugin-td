@@ -38,7 +38,7 @@ ruleTester.run('modal-usage', modalUsage, {
               Cancel
             </Button>
             <Button
-              disabled={enteredVal !== numberOfMasterSegments}
+              disabled={enteredVal !== variable}
               primary
               onClick={this._onSave}
               id={MODAL_SAVE_ID}
@@ -47,20 +47,17 @@ ruleTester.run('modal-usage', modalUsage, {
             </Button>
           </ComponentGroup>
         }
-        title={\`Permission Change Confirmation\`}
+        title={\`string\`}
       >
         <div>
           <p>
-            Changing the policy to <strong>{\`\${label}\`}</strong> will remove
-            details for <strong>{\`\${numberOfMasterSegments}\`}</strong> master
-            segment(s) and its folders.
+            string
           </p>
           <br />
-          <p>This action can not be undone.</p>
+          <p>string</p>
           <br />
           <p>
-            To make sure this is what you want, type the number of master
-            segments that will be affected.
+            string
           </p>
           <br />
           <Input
@@ -72,12 +69,12 @@ ruleTester.run('modal-usage', modalUsage, {
         </div>
       </Modal>
 `,
-      filename: 'policy-modal.js'
+      filename: 'modal-footer-component.js'
     },
     {
       code: `
       <Modal
-        backdropClassName={cn(styles.Background, backdropClassName)}
+        backdropClassName={cn(styles.Background, backgroundClassName)}
         className={cn(styles.ReactOverlayModal, className)}
         {...otherProps}
       />
@@ -91,12 +88,12 @@ ruleTester.run('modal-usage', modalUsage, {
       headerClass={styles.HeaderContainer}
       onHide={onHide}
       show={isActive}
-      title={\`Run \${workflowName}\`}
+      title={\`Run \${variable}\`}
     >
       {content}
     </Modal>
       `,
-      filename: 'workflow-modal.js'
+      filename: 'modal-without-children.js'
     }
   ],
 

@@ -1,9 +1,8 @@
-const jp = require('jsonpath')
+const lodash = require('lodash')
 
 /*
  * helper functions
  */
-const oneOf = (needle, haystack) => haystack.indexOf(needle) > -1
 const matchAll = (needles, haystack) => {
   if (needles.length === 0) {
     return true
@@ -28,7 +27,7 @@ const matchAll = (needles, haystack) => {
 
 const memberExpressionName = expr => {
   const collapse = obj =>
-    oneOf(obj.type, ['JSXIdentifier', 'Identifier'])
+    ['JSXIdentifier', 'Identifier'].includes(obj.type)
       ? obj.name
       : memberExpressionName(obj)
   const object = collapse(expr.object)
@@ -38,7 +37,7 @@ const memberExpressionName = expr => {
 }
 
 const tag = node =>
-  jp.value(node, '$.openingElement.name.name') ||
+  lodash.get(node, ['openingElement', 'name', 'name']) ||
   memberExpressionName(node.openingElement.name)
 
 /*
@@ -69,7 +68,9 @@ module.exports = {
   create: context => {
     return {
       JSXElement: element => {
-        if (jp.value(element, '$.openingElement.name.name') !== 'Modal') {
+        if (
+          lodash.get(element, ['openingElement', 'name', 'name']) !== 'Modal'
+        ) {
           return
         }
 

@@ -19,7 +19,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "import-modules": "^1.1.0",
-    "jsonpath": "^1.0.2"
+    "lodash": "^4.17.11"
   },
   "peerDependencies": {
     "eslint": "^4.13.1",
