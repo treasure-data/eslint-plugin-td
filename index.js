@@ -28,10 +28,19 @@ module.exports = {
         'prettier/react',
         'prettier/standard'
       ],
-      plugins: ['standard', 'flowtype', 'react', 'prettier', 'td'],
+      plugins: [
+        'standard',
+        'flowtype',
+        'react',
+        'react-hooks',
+        'prettier',
+        'td'
+      ],
       rules: {
         'td/no-ducks': 'error',
         'td/modal-usage': 'error',
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
         'import/extensions': [
           'error',
           'never',
