@@ -7,7 +7,7 @@
 ## Install
 
 ```
-$ npm install --save-dev eslint eslint-plugin-td
+$ npm install --save-dev eslint eslint-plugin-td eslint-plugin-react-hooks
 ```
 
 ## Usage
@@ -16,10 +16,10 @@ Configure eslint to use it in `package.json`:
 
 ```json
 {
-    "eslintConfig": {
-        "extends": "plugin:td/recommended",
-        "plugins": ["td"]
-    }
+  "eslintConfig": {
+    "extends": "plugin:td/recommended",
+    "plugins": ["td"]
+  }
 }
 ```
 
@@ -27,7 +27,8 @@ For more information on configuring eslint, see the [docs](https://eslint.org/do
 
 ## Rules
 
-* [**no-ducks**](/docs/rules/no-ducks.md) - Prevents the use of ["duck modules"](https://github.com/erikras/ducks-modular-redux).
+- [**no-ducks**](/docs/rules/no-ducks.md) - Prevents the use of ["duck modules"](https://github.com/erikras/ducks-modular-redux).
+- [**modal-usage**](/docs/rules/modal-usage.md) - Ensure modals with a simple structure use `<SimpleModal></SimpleModal>`
 
 ## Licence
 
