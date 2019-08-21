@@ -39,6 +39,8 @@ module.exports = {
       rules: {
         'td/no-ducks': 'error',
         'td/modal-usage': 'error',
+        'td/private-exports': 'error',
+        'td/no-styles-assignment': 'warn',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'import/extensions': [
