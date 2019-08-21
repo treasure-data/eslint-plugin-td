@@ -1,8 +1,7 @@
 {
   "name": "eslint-plugin-td",
   "version": "2.0.0",
-  "description":
-    "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
+  "description": "A shared eslint config and additional rules, to be used across Treasure Data frontend projects",
   "main": "index.js",
   "scripts": {
     "precommit": "lint-staged",
@@ -10,7 +9,11 @@
     "pretest": "yarn lint",
     "test": "jest"
   },
-  "keywords": ["eslint", "eslintplugin", "eslint-plugin"],
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
   "author": "Dan Reeves <dreeves@treasuredata.com>",
   "bugs": {
     "url": "https://github.com/treasure-data/eslint-plugin-td/issues"
@@ -19,7 +22,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "import-modules": "^1.1.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "@babel/traverse": "^7.5.5",
+    "@babel/generator": "^7.5.5",
+    "@babel/types": "^7.5.5",
+    "@babel/parser": "^7.5.5"
   },
   "peerDependencies": {
     "eslint": "^4.13.1",
@@ -61,7 +68,12 @@
     "singleQuote": true
   },
   "lint-staged": {
-    "*.js": ["eslint"],
-    "*.{js,json,md}": ["prettier --write", "git add"]
+    "*.js": [
+      "eslint"
+    ],
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
