@@ -1,8 +1,9 @@
 const { RuleTester } = require('eslint')
 const modalUsage = require('../rules/modal-usage')
+const babelEslint = require.resolve('babel-eslint')
 
 const ruleTester = new RuleTester({
-  parser: 'babel-eslint',
+  parser: babelEslint,
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: 'module',

@@ -1,8 +1,9 @@
 const { RuleTester } = require('eslint')
 const noDucks = require('../rules/no-ducks')
+const babelEslint = require.resolve('babel-eslint')
 
 const ruleTester = new RuleTester({
-  parser: 'babel-eslint',
+  parser: babelEslint,
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: 'module'
