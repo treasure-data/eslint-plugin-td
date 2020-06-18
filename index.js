@@ -20,17 +20,14 @@ module.exports = {
       },
       extends: [
         'plugin:react/recommended',
-        'plugin:flowtype/recommended',
         'standard',
         'standard-jsx',
         'prettier',
-        'prettier/flowtype',
         'prettier/react',
         'prettier/standard'
       ],
       plugins: [
         'standard',
-        'flowtype',
         'react',
         'react-hooks',
         'prettier',
