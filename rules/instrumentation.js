@@ -39,7 +39,7 @@ function hasInstrumentation(node) {
 }
 
 module.exports = {
-  supportsAutofix: true,
+  supportsAutofix: false,
   create: (context) => {
     return {
       JSXOpeningElement: (node) => {
