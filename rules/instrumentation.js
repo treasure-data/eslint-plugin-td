@@ -52,7 +52,7 @@ module.exports = {
         context.report({
           node,
           loc: node.loc,
-          message: `Component ${node.name?.name} needs to have have a ${INSTRUMENTATION_PROP} attribute`,
+          message: `Component ${node.name.name} needs to have have a ${INSTRUMENTATION_PROP} attribute`,
         })
       },
     }
