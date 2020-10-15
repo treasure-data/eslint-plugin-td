@@ -12,10 +12,13 @@ const INSTRUMENTATION_ATTRIBUTES = [
 const INSTRUMENTATION_PROP = 'data-instrumentation'
 
 const findAttribute = (element, needle) =>
-  element.attributes?.find((attribute) => attribute.name?.name === needle)
+  element.attributes &&
+  element.attributes.find(
+    (attribute) => attribute.name && attribute.name.name === needle
+  )
 
 function shouldHaveInstrumentation(node) {
-  if (INSTRUMENTATION_COMPONENTS.includes(node.name?.name)) {
+  if (node.name && INSTRUMENTATION_COMPONENTS.includes(node.name.name)) {
     return true
   }
   if (INSTRUMENTATION_ATTRIBUTES.some((attr) => findAttribute(node, attr))) {
@@ -25,8 +28,11 @@ function shouldHaveInstrumentation(node) {
 }
 
 function hasInstrumentation(node) {
-  const instrumentationProp = findAttribute(node, INSTRUMENTATION_P  ROP)
-  if (!instrumentationProp || instrumentationProp.value?.value === '') {
+  const instrumentationProp = findAttribute(node, INSTRUMENTATION_PROP)
+  if (
+    !instrumentationProp ||
+    (instrumentationProp.value && instrumentationProp.value.value === '')
+  ) {
     return false
   }
   return true
