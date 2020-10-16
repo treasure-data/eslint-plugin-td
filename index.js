@@ -11,12 +11,12 @@ module.exports = {
         sourceType: 'module',
         ecmaFeatures: {
           jsx: true,
-          experimentalObjectRestSpread: true
-        }
+          experimentalObjectRestSpread: true,
+        },
       },
       env: {
         node: true,
-        es6: true
+        es6: true,
       },
       extends: [
         'plugin:react/recommended',
@@ -26,7 +26,7 @@ module.exports = {
         'prettier',
         'prettier/flowtype',
         'prettier/react',
-        'prettier/standard'
+        'prettier/standard',
       ],
       plugins: [
         'standard',
@@ -34,19 +34,20 @@ module.exports = {
         'react',
         'react-hooks',
         'prettier',
-        'td'
+        'td',
       ],
       rules: {
         'td/no-ducks': 'error',
         'td/modal-usage': 'error',
+        'td/instrumentation': 'error',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'import/extensions': [
           'error',
           'never',
-          { css: 'always', json: 'always' }
-        ]
-      }
-    }
-  }
+          { css: 'always', json: 'always' },
+        ],
+      },
+    },
+  },
 }
