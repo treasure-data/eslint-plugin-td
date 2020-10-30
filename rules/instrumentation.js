@@ -17,7 +17,10 @@ const findAttribute = (element, needle) =>
     (attribute) => attribute.name && attribute.name.name === needle
   )
 
-function shouldHaveInstrumentation(node) {
+function shouldHaveInstrumentation(node, filename) {
+  if (filename.includes('.test.') || filename.includes('.stories.')) {
+    return false
+  }
   if (node.name && INSTRUMENTATION_COMPONENTS.includes(node.name.name)) {
     return true
   }
@@ -43,7 +46,7 @@ module.exports = {
   create: (context) => {
     return {
       JSXOpeningElement: (node) => {
-        if (!shouldHaveInstrumentation(node)) {
+        if (!shouldHaveInstrumentation(node, context.getFilename())) {
           return
         }
         if (hasInstrumentation(node)) {
